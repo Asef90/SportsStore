@@ -23,11 +23,16 @@ export class StoreComponent {
     return this.repository.getCategories();
   }
 
-  get pageNumbers(): number[] {
-    return Array(Math.ceil(this.repository
-        .getProducts(this.selectedCategory).length / this.productsPerPage))
-        .fill(0).map((x, i) => i + 1);
+  get pageCount():number {
+    return Math.ceil(this.repository
+        .getProducts(this.selectedCategory).length / this.productsPerPage);
   }
+
+  // get pageNumbers(): number[] {
+  //   return Array(Math.ceil(this.repository
+  //       .getProducts(this.selectedCategory).length / this.productsPerPage))
+  //       .fill(0).map((x, i) => i + 1);
+  // }
 
   changeCategory(newCategory?: string) {
     this.selectedCategory = newCategory;
